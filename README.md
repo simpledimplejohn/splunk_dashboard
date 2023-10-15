@@ -6,3 +6,7 @@ https://youtube.com/playlist?list=PLiygfjUtktWzgOAlulqx4eI6eYngDxCcT&si=v8v4LSoY
 
 - add folders to app
     appserver/static
+
+## REINSTALL SPLUNK
+    `Applications/Splunk/bin/splunk stop`
+    
