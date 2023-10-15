@@ -1,0 +1,144 @@
+{
+    "modelName": "zomato_",
+    "displayName": "zomato_",
+    "description": "",
+    "objectSummary": {
+        "Event-Based": 1,
+        "Transaction-Based": 0,
+        "Search-Based": 0
+    },
+    "objects": [
+        {
+            "objectName": "continent",
+            "displayName": "continent",
+            "parentName": "BaseEvent",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "country_code",
+                            "owner": "continent",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "country_code",
+                            "comment": ""
+                        }
+                    ],
+                    "calculationID": "m4bl2x9tx",
+                    "owner": "continent",
+                    "editable": true,
+                    "comment": "",
+                    "calculationType": "Eval",
+                    "expression": "'Country Code'"
+                },
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "name",
+                            "owner": "continent",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "name",
+                            "comment": "",
+                            "lookupOutputFieldName": "name"
+                        },
+                        {
+                            "fieldName": "region",
+                            "owner": "continent",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "region",
+                            "comment": "",
+                            "lookupOutputFieldName": "region"
+                        }
+                    ],
+                    "calculationType": "Lookup",
+                    "lookupName": "geo_attr_countries",
+                    "comment": "",
+                    "lookupInputs": [
+                        {
+                            "inputField": "country_code",
+                            "lookupField": "country-code"
+                        }
+                    ],
+                    "owner": "continent",
+                    "calculationID": "8cd9evxkh5j",
+                    "editable": true
+                }
+            ],
+            "constraints": [
+                {
+                    "search": "index=zomato \"Country Code\"=* \"Country Code\"!=1",
+                    "owner": "continent"
+                }
+            ],
+            "lineage": "continent"
+        }
+    ],
+    "objectNameList": [
+        "continent"
+    ]
+}
