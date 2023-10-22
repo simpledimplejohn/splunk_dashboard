@@ -1,3 +1,38 @@
-<dashboard version="1.1" theme="light">
-<label>test</label>
+<dashboard version="1.1" theme="dark" script="scripts.js">
+  <label>test</label>
+  <row>
+    <panel>
+      <event>
+        <search>
+          <query>index=* bearer 
+| rex field=_raw "beaer | BEARER\s(?&lt;bearer&gt;.*)"
+| table index host sourcetype bearer</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">row</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">0</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.sortDirection">asc</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <drilldown>
+          <set token="index">$row.index$</set>
+          <set token="host">$row.host$</set>
+          <set token="sourcetype">$row.sourcetype$</set>
+        </drilldown>
+      </event>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>$index$ $host$ $sourcetype$</title>
+    </panel>
+  </row>
 </dashboard>
